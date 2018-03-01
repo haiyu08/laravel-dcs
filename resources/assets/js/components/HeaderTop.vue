@@ -23,7 +23,7 @@
           </el-form>
           <div slot="footer" class="dialog-footer position_footer">
             <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
-            <div class="mrtop_5"><input type="checkbox"><span class="f12" checked="checked">我已阅读并同意相关服务条款和隐私政策</span></div>
+            <div class="mrtop_5"><input type="checkbox" checked="checked"><span class="f12" >我已阅读并同意相关服务条款和隐私政策</span></div>
             <div class="el-input__forget mrtop_4">已有帐号？<a href="#">请登录</a></div>
           </div>
         </el-dialog>

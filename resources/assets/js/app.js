@@ -13,6 +13,12 @@ import ElementUI from 'element-ui';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import App from './App.vue'; //添加的内容
 import router from './router';//添加的内容
+import Trail from './components/Trail'
+import Price from './components/Price'
+import Order from './components/Order'
+import Account from './components/Account'
+import Document from './components/Document'
+import News from './components/News'
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
