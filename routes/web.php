@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//Route::get('/','FrontpageController@homepage');//front page: home page
+Route::get('/', function () { return view('index');});
