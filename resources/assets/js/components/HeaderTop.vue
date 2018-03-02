@@ -1,50 +1,93 @@
 <template>
 	<div id='header_top'>
-		<div class="bg_header">
-			<ul class="cont_header">
-				<li><img src="../assets/weibo.png"></li>
-				<li><img src="../assets/wechat.png"></li>
+    <div class="bg_header">
+      <ul class="cont_header">
+        <li><img src="../assets/weibo.png"></li>
+        <li><img src="../assets/wechat.png"></li>
 
         <li class="width_80"><el-button type="text" @click="dialogTableVisible = true">免费注册</el-button></li>        
-				<li class="width_80"><el-button type="text" @click="dialogFormVisible = true">请登录</el-button></li>
-
+        <li class="width_80"><el-button type="text" @click="dialogFormVisible = true">请登录</el-button></li>
+        <!--注册-->
         <el-dialog title="注册" :visible.sync="dialogTableVisible" class="dia_register">
           <el-form :model="form">
-              <el-input v-model="form.name1" placeholder="请输入手机号码" auto-complete="off"></el-input>
+              <el-input v-model="form.name1" name="phone" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
-              <el-input v-model="form.name2" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
+
+              <el-input v-model="form.name2" name="alpha_dash" placeholder="请输入登录密码" auto-complete="off" type="password" v-validate="'required|alpha_dash|max:14|min:6'" ></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
 
               <el-input v-model="form.name3" placeholder="请输入验证码" auto-complete="off" type="text" class='yzm'></el-input>
               <el-button type="primary" class="send_yzm">短信验证码</el-button>
 
-              <el-input v-model="form.name4" class="alert_text position_text" auto-complete="off" readonly></el-input>
-              <div class="el-input__prefix font_alert position_icon"><img src="../assets/bg_alert.png"><span>请输入正确手机号</span></div>
+              <el-input v-model="form.name4" class="alert_text position_text" v-if="errors.has('phone')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert position_icon" v-if="errors.has('phone')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone') }}</span></div>
+
+              <template v-else> 
+                <el-input v-model="form.name4" class="alert_text position_text" v-if="errors.has('alpha_dash')" auto-complete="off" readonly></el-input>
+                <div class="el-input__prefix font_alert position_icon" v-if="errors.has('alpha_dash')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash') }}</span></div>
+              </template>
+
           </el-form>
           <div slot="footer" class="dialog-footer position_footer">
             <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
-            <div class="mrtop_5"><input type="checkbox" checked="checked"><span class="f12" >我已阅读并同意相关服务条款和隐私政策</span></div>
-            <div class="el-input__forget mrtop_4">已有帐号？<a href="#">请登录</a></div>
+            <!--<div class="mrtop_5"><input type="checkbox"  checked="checked"><span class="f12">我已阅读并同意相关服务条款和隐私政策</span></div>-->
+            <div class="el-input__forget mrtop_4">已有帐号？<a href="#" @click="dialogFormVisible = true;dialogTableVisible = false">请登录</a></div>
           </div>
         </el-dialog>
 
+        <!--登录-->
         <el-dialog title="登录" :visible.sync="dialogFormVisible">
           <el-form :model="form">
-              <el-input v-model="form.name1" placeholder="请输入手机号码" auto-complete="off"></el-input>
+              <el-input v-model="form.name10" name="phone_login" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
-              <el-input v-model="form.name2" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
+              <el-input v-model="form.name11" name="alpha_dash_login" v-validate="'required|alpha_dash|max:14|min:6'" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
-              <el-input v-model="form.name3" class="alert_text" auto-complete="off" readonly></el-input>
-              <div class="el-input__prefix font_alert"><img src="../assets/bg_alert.png"><span>请输入正确手机号</span></div>
+
+              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('phone_login')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert" v-if="errors.has('phone_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone_login') }}</span></div>
+
+              <template v-else> 
+              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('alpha_dash_login')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert" v-if="errors.has('alpha_dash_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash_login') }}</span></div>
+              </template>
+
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-            <div class="el-input__forget">还没有帐号？<a href="#">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码？</a></span></div>
+            <div class="el-input__forget">还没有帐号？<a href="#" @click="dialogFormVisible = false;dialogTableVisible = true">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" @click="dialogFormVisible = false;dialogFormVisiblemima = true">忘记密码？</a></span></div>
           </div>
         </el-dialog>
 
-			</ul>
-		</div>
+
+        <!--忘记密码-->
+        <el-dialog title="忘记密码" :visible.sync="dialogFormVisiblemima">
+          <el-form :model="form">
+              <el-input v-model="form.name10" name="phone_login" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
+              <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
+              <el-input v-model="form.name11" name="alpha_dash_login" v-validate="'required|alpha_dash|max:14|min:6'" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
+              <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
+
+              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('phone_login')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert" v-if="errors.has('phone_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone_login') }}</span></div>
+
+              <template v-else> 
+              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('alpha_dash_login')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert" v-if="errors.has('alpha_dash_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash_login') }}</span></div>
+              </template>
+
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="dialogFormVisiblemima = false">确 定</el-button>
+            <div class="el-input__forget">还没有帐号？<a href="#" @click="dialogFormVisiblemima = false;dialogTableVisible = true">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码？</a></span></div>
+          </div>
+        </el-dialog>
+
+
+
+
+
+      </ul>
+    </div>
 		
 		<div class="main_nav">
 			<div class="top_nav">
@@ -61,12 +104,12 @@
 				<div class="right_btmnav">
 				</div>
 				<ul class="area_nav">
-					<li><a href="#">首 页</a></li>
-					<li><a href="#">运价查询</a></li>
-					<li><a href="#">轨迹查询</a></li>
-					<li><a href="#">物流工具</a></li>
-					<li><a href="#">物流资讯</a></li>
-					<li><a href="#">大常生控股</a></li>
+					<li><router-link to="./">首 页</router-link></li>
+					<li><router-link to="./price">运价查询</router-link></li>
+					<li><router-link to="./trail">轨迹查询</router-link></li>
+					<li><router-link to="./trail">物流工具</router-link></li>
+					<li><router-link to="./news">物流资讯</router-link></li>
+					<li><router-link to="">大常生控股</router-link></li>
 				</ul>
 			</div>
 
@@ -75,25 +118,36 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        dialogTableVisible: false,
-        dialogFormVisible: false,
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        },
-        formLabelWidth: '120px'
-      };
+
+export default {
+  data() {
+    return {
+      name: 'Vue.js',
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+      dialogFormVisiblemima: false,
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      },
+      formLabelWidth: '120px'
+    };
+  },  
+  methods: {
+    greet: function (event) {
+      alert('Hello ' + this.name + '!')
+      if (event) {
+        alert(event.target.tagName)
+      }
     }
-  };
+  }
+};
 </script>
 
 <style>
@@ -113,7 +167,7 @@ ul.cont_header li.width_80 { width:80px; }
 .left_btmnav { float:left; height: 55px; width:50%; background: url('../assets/bg_nav.png') right 0 no-repeat; z-index: 1; }
 .right_btmnav { float:left; height: 55px;width:50%; background: #f9c231; z-index: 2;}
 .area_nav { width:840px; margin:0 auto; position: relative; top:-55px; left:210px;}
-.area_nav li { width:130px; float: left; height: 55px; line-height: 55px; text-align:center; }
+.area_nav li { width:130px; float: left; height: 55px; line-height: 55px; }
 .area_nav li a:link,.area_nav li a:visited { color:#333333; font-size: 16px; text-decoration: none; }
 .el-dialog { width:450px; height: 470px; }
 .el-dialog__header { height: 40px; background: #ebebeb; padding: 0px; line-height: 40px; font-size: 14px; color:#333333; } 
@@ -138,7 +192,7 @@ ul.cont_header li.width_80 { width:80px; }
 .el-input__forget a:hover { color:#333333; text-decoration:underline; }
 .position_text { position: relative; top:-43px; }
 .position_icon { position: relative; top:-90px; }
-.position_footer { position: relative; top:-43px; }
+.position_footer { position: relative; top:-43px; clear: both; }
 .dia_register .el-dialog__body { padding-top:55px; }
 .mrtop_5 { margin-top:10px; position: relative; left:-8px; }
 .mrtop_5 span { position: relative; top:-2px; }

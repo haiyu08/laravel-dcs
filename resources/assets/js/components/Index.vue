@@ -193,7 +193,7 @@
           delivery: false,
           type: [],
           resource: '',
-          desc: ''
+          desc: '',
         },
         swiperOption: {
           slidesPerView: 1,

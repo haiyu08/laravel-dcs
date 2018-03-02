@@ -3,45 +3,18 @@
 		<div class="cent_news mt_15px">
 			<div class="left_list">
 				<ul class="nav_news">
-					<li class="hover"><a href="#">最新资讯</a></li>
-					<li><a href="#">国际海运</a></li>
-					<li><a href="#">国际贸易</a></li>
-					<li><a href="#">跨境电商</a></li>
-					<li><a href="#">船公司</a></li>
-					<li><a href="#">干货知识</a></li>
-					<li><a href="#">行业预警</a></li>
-					<li><a href="#">案例分析</a></li>
+					<li v-bind:class="{hover:zxzx}"><a href="#">最新资讯</a></li>
+					<li v-bind:class="{hover:gjhy}"><a href="#">国际海运</a></li>
+					<li v-bind:class="{hover:gjmy}"><a href="#">国际贸易</a></li>
+					<li v-bind:class="{hover:kjds}"><a href="#">跨境电商</a></li>
+					<li v-bind:class="{hover:cgs}"><a href="#">船公司</a></li>
+					<li v-bind:class="{hover:ghzs}"><a href="#">干货知识</a></li>
+					<li v-bind:class="{hover:hyyj}"><a href="#">行业预警</a></li>
+					<li v-bind:class="{hover:alfx}"><a href="#">案例分析</a></li>
 				</ul>
 				<div class="area_article">
-					<div class="titile_article">寄快递到乌拉圭可走什么快递？<br><span>2018-02-05 19:20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读：206</span></div>
-					<div class="cont_article">
-						<p><img src="../assets/img3.jpg"/><br><center>这是图片说明</center></p>
-						<p>乌拉圭是南美洲东南部的一个国家，与巴西、阿根廷接壤，东南临大西洋。乌拉圭首都为蒙得维的亚，官方语言为西班牙语。</p>
-<p>乌拉圭经济水平在拉美国家中处于中等发展水平，主要经济以出口农业为主。主要生产并出口肉类、羊毛、水产品、皮革和稻米等。主要进口产品为汽车、汽车配件和电话等。主要进口来源地为中国、阿根廷、巴西和美国。</p>
-
-　　<p>进口关税</p>
-
-　　<p>乌拉圭政府自1975年起采取了较为开放的自由进口及低关税的外贸政策。鼓励进口原材料、中间产品和制成品。以前的进口关税为300%，须预付200%，并且要有进口许可证。现在的进口关税平均为14%，最高为22.5%。</p>
-
-　　<p>限制进口措施</p>
-
-　　<p>1、禁止进口二手交通工具，该法令由现政府指定并且每180天重申一次。</p>
-
-　　<p>2、原油及其制成品、液化、半液化及气态碳氢燃料的进口须获得政府许可。</p>
-
-　　<p>3、禁止进口含砷和锑物质的用于牛、羊、猪、马和家禽的促生长和催肥的产品。</p>
-
-　　<p>4、禁止进口用于牛、羊、猪、马和家禽的促生长和催肥的兽医药品，因为这些药品含转基因激素或有去甲状腺素作用、含有合成的或自然的代谢激素。</p>
-
-　　<p>5、纺织品方面，乌拉圭列出了布匹和服装清单并制定了特别关税。任何纺织品的进口都需要事先得到许可证，但其关税不能超过到岸价格的35%。</p>
-
-　　<p>6、有特殊附加条件的进口商品。</p>
-
-　　<p>7、民用、军用和警用汽车等交通工具。</p>
-
-　　<p>反倾销规定</p>
-
-　　<p>乌拉圭第142/966法令规定，当进口的商品属于倾销性质并损害了本国工业的生产时，将对该商品实行反倾销措施。已被实行反倾销措施的商品有：阿根廷的食用油、意大利的热水器、澳大利亚的电镀板材等。</p></div>
+					<div class="titile_article">{{ title }}<br><span>{{ update_at }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读：{{ read }}</span></div>
+					<div class="cont_article">{{ content }}</div>
 				</div>
 			</div>
 			<div class="paihan">
@@ -79,7 +52,7 @@
 					</li>
 					<li>
 						<div class="img_hot"><img src="../assets/img4.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
+						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》{{ getarticle() }}</div>
 					</li>
 				</ul>
 			</div>
@@ -105,9 +78,66 @@
           type: [],
           resource: '',
           desc: ''
-        }
+        },
+        title: '',
+        update_at: '',
+        read: '',
+        content: '',
+        zxzx: false,
+        gjhy: false,
+        gjmy: false,
+        kjds: false,
+        cgs: false,
+        ghzs: false,
+        hyyj: false,
+        alfx: false,
       }
-    },
+    },  
+
+	methods: {
+		greet: function (event) {
+		  alert('Hello ' + this.name + '!')
+		  if (event) {
+		    alert(event.target.tagName)
+		  }
+		},
+		getarticle: function(event){
+			alert(this.$route.query.type);
+			if(this.$route.query.type == 1){ 
+				this.zxzx = true;
+			}else if(this.$route.query.type == 2){ 
+				this.gjhy = true;
+			}else if(this.$route.query.type == 3){ 
+				this.gjmy = true;
+			}else if(this.$route.query.type == 4){ 
+				this.kjds = true;
+			}else if(this.$route.query.type == 5){ 
+				this.cgs = true;
+			}else if(this.$route.query.type == 6){ 
+				this.ghzs = true;
+			}else if(this.$route.query.type == 7){ 
+				this.hyyj = true;
+			}else if(this.$route.query.type == 8){ 
+				this.alfx = true;
+			}
+
+		  return this.$http.get('http:\/\/localhost\/get_article', {
+		    params: {
+		      id:this.$route.query.id
+		    }
+		  })
+		  .then(function (response) {
+        	this.title = response.data.data.title
+        	this.update_at = response.data.data.create_at
+        	this.read = response.data.data.read
+        	this.content = response.data.data.content
+		  })
+		  .catch(function (error) {
+        	//this.fetchError = error
+		  })
+		}
+
+	}
   }
 </script>
 

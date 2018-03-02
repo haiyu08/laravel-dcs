@@ -12,5 +12,11 @@
 */
 
 
-//Route::get('/','FrontpageController@homepage');//front page: home page
-Route::get('/', function () { return view('index');});
+Route::get('/','FrontpageController@homepage');//front page: home page
+Route::get('/aa', function () { return view('index');});
+Route::get('/welcome','FrontpageController@homepage');//front page: home page
+Route::get('/welcome_vue','FrontpageController@homepage');//front page: home page
+
+
+Route::get('/get_article','ArticleController@get_article');
+

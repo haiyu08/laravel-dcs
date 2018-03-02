@@ -2,10 +2,12 @@
 	<div id="area_news">
 		<div class="top_news">
 			<div class="hotpic_news">
-				<a href="#">
+				
+  				<router-link :to="{ path: 'article', query: { id: 1 , type: 2 }}">
 				<img src="../assets/img_news.jpg"><br>
 				<div>国产品牌从“农村”走向国际路径：收购国际大牌</div>
-				</a>
+				</router-link>
+
 			</div>
 			<ul class="font_commond">
 				<li><a href="#">国家能源集团与国电集团今日签署《合并协议》</a></li>

@@ -45,8 +45,8 @@ class FrontpageController extends  Controller
 
     public function homepage()
     {
-
-        return view('frontend.homepage',array('locale' => $this->locale));
+        //return view('frontend.homepage',array('locale' => $this->locale));
+        return view('index',array('locale' => $this->locale));
     }
 
     public function index2()
