@@ -74,7 +74,7 @@
 </template>
 
 <script>
-  export default {
+/*  export default {
     data() {
       return {
         form: {
@@ -89,7 +89,37 @@
         }
       }
     },
+  }*/
+  
+export default {    
+  mounted() {
+  	
+  },
+  data() {
+    return {
+      name: 'Vue.js',
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+      dialogFormVisiblemima: false,
+      username:1111,
+      password:2222,
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: '',
+      },
+      formLabelWidth: '120px',
+    };
+  },  
+  methods: {
+
   }
+};
 </script>
 
 <style>

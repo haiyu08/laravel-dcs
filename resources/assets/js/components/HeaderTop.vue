@@ -4,9 +4,11 @@
       <ul class="cont_header">
         <li><img src="../assets/weibo.png"></li>
         <li><img src="../assets/wechat.png"></li>
-
-        <li class="width_80"><el-button type="text" @click="dialogTableVisible = true">免费注册</el-button></li>        
-        <li class="width_80"><el-button type="text" @click="dialogFormVisible = true">请登录</el-button></li>
+        <li v-if="user_session === false" class="width_80"><el-button type="text" @click="dialogTableVisible = true">免费注册</el-button></li>        
+        <li v-if="user_session === false" class="width_80"><el-button type="text" @click="dialogFormVisible = true">请登录</el-button></li>      
+        <li v-if="user_session === true" class="width_80"><el-button type="text" 
+          v-on:click="func_logout">退出登录</el-button></li>
+        <li  class="width_80" v-if="user_session === true" v-text="session_username"></li> 
         <!--注册-->
         <el-dialog title="注册" :visible.sync="dialogTableVisible" class="dia_register">
           <el-form :model="form">
@@ -38,9 +40,9 @@
         <!--登录-->
         <el-dialog title="登录" :visible.sync="dialogFormVisible">
           <el-form :model="form">
-              <el-input v-model="form.name10" name="phone_login" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
+              <el-input  v-model="username" name="phone_login" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }" ></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
-              <el-input v-model="form.name11" name="alpha_dash_login" v-validate="'required|alpha_dash|max:14|min:6'" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
+              <el-input v-model="password" name="alpha_dash_login" v-validate="'required|alpha_dash|max:14|min:6'" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
 
               <el-input v-model="form.name12" class="alert_text" v-if="errors.has('phone_login')" auto-complete="off" readonly></el-input>
@@ -53,8 +55,8 @@
 
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-            <div class="el-input__forget">还没有帐号？<a href="#" @click="dialogFormVisible = false;dialogTableVisible = true">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" @click="dialogFormVisible = false;dialogFormVisiblemima = true">忘记密码？</a></span></div>
+            <el-button type="primary" v-on:click="func_login" @click="dialogFormVisible = false"> <!-- v-on:click="func_login" -->确 定2</el-button>
+            <div class="el-input__forget">还没有帐号？<a href="#" >请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" @click="dialogFormVisible = false;dialogFormVisiblemima = true">忘记密码？</a></span></div>
           </div>
         </el-dialog>
 
@@ -83,9 +85,6 @@
         </el-dialog>
 
 
-
-
-
       </ul>
     </div>
 		
@@ -105,10 +104,10 @@
 				</div>
 				<ul class="area_nav">
 					<li><router-link to="./">首 页</router-link></li>
-					<li><router-link to="./price">运价查询</router-link></li>
-					<li><router-link to="./trail">轨迹查询</router-link></li>
+					<li v-bind:class="{active:price}"><router-link to="./price">运价查询</router-link></li>
+					<li v-bind:class="{active:trail}"><router-link to="./trail">轨迹查询</router-link></li>
 					<li><router-link to="./trail">物流工具</router-link></li>
-					<li><router-link to="./news">物流资讯</router-link></li>
+					<li v-bind:class="{active:news}"><router-link to="./news">物流资讯</router-link></li>
 					<li><router-link to="">大常生控股</router-link></li>
 				</ul>
 			</div>
@@ -119,13 +118,21 @@
 
 <script>
 
-export default {
+export default {     
+  mounted() {
+    this.get_session();
+    this.topnav();
+  }, 
   data() {
     return {
       name: 'Vue.js',
       dialogTableVisible: false,
       dialogFormVisible: false,
       dialogFormVisiblemima: false,
+      username:'',
+      password:'',
+      session_username:'',
+      user_session:false,
       form: {
         name: '',
         region: '',
@@ -134,21 +141,85 @@ export default {
         delivery: false,
         type: [],
         resource: '',
-        desc: ''
+        desc: '',
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      api_login: 'http://localhost/login',
+      api_session: 'http://localhost/get_session',
+      api_list:'http://localhost/list_hotarticle',
+      api_logout:'http://localhost/logout',
+      price:'',
+      trail:'',
+      news:''
     };
   },  
   methods: {
-    greet: function (event) {
-      alert('Hello ' + this.name + '!')
-      if (event) {
-        alert(event.target.tagName)
+
+    topnav: function(event){
+      var route_path = window.location.hash;
+      //alert(route_path);
+      if(route_path == '#/price'){ 
+        //this.price = true;
+      }else if(route_path == '#/trail'){ 
+        //this.trail = true;
+      }else if(route_path == 3){ 
+        this.gjmy = true;
+      }else if(route_path == '#/news'){ 
+        //this.news = true;
+      }else if(route_path == 5){ 
+        this.cgs = true;
+      }else if(route_path == 6){ 
+        this.ghzs = true;
+      }else if(route_path == 7){ 
+        this.hyyj = true;
+      }else if(route_path == 8){ 
+        this.alfx = true;
       }
-    }
+    },
+
+    func_login:function (event) {
+      return this.$http.get(this.api_login, {
+        params: {
+          username:this.username,
+          password:this.password,
+        }
+      })
+      .then(response=>{
+          alert('登录成功');
+          location.reload();
+      })
+      .catch(function (error) {
+          //console.log(response);
+      })
+    },
+
+    func_logout:function (event) { 
+      return this.$http.post(this.api_logout,{})
+      .then(response=>{
+        alert('退出成功');
+        location.reload();
+      })
+      .catch(function (error){})
+    },
+
+    get_session:function (event) { 
+      return this.$http.get(this.api_session, {
+      })
+      .then(response=>{
+          this.session_username = response.data.data.username;
+          this.user_session = response.data.data.user_session;
+          console.log(response.data.data);
+          console.log('应该有值啊');
+      })
+      .catch(function (error) {
+          console.log(response);
+      })
+    },
+
   }
 };
 </script>
+
 
 <style>
 .bg_header { width:100%; height:50px; background: #f3f3f3; overflow: hidden;}
@@ -169,6 +240,7 @@ ul.cont_header li.width_80 { width:80px; }
 .area_nav { width:840px; margin:0 auto; position: relative; top:-55px; left:210px;}
 .area_nav li { width:130px; float: left; height: 55px; line-height: 55px; }
 .area_nav li a:link,.area_nav li a:visited { color:#333333; font-size: 16px; text-decoration: none; }
+.area_nav li.active a:link,.area_nav li.active a:visited { color:#333333; font-size: 16px; text-decoration: none; font-weight:bold; }
 .el-dialog { width:450px; height: 470px; }
 .el-dialog__header { height: 40px; background: #ebebeb; padding: 0px; line-height: 40px; font-size: 14px; color:#333333; } 
 .el-dialog__headerbtn { top:12px; right:12px; }

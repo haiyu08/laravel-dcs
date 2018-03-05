@@ -207,7 +207,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.readnumber = response.data.data.readnumber;
         _this.content = response.data.data.content;
       }).catch(function (error) {
-        console.log(response);
+        console.log(error);
       });
     },
 
@@ -217,7 +217,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.$http.get(this.api_list, {}).then(function (response) {
         _this2.items = response.data.data;
       }).catch(function (error) {
-        console.log(response);
+        console.log(error);
       });
     }
 

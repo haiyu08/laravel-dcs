@@ -105,7 +105,7 @@
         	this.content = response.data.data.content
 		  })
 		  .catch(function (error) {
-        	console.log(response);
+        	console.log(error);
 		  })
 		},
 
@@ -116,7 +116,7 @@
         	this.items = response.data.data
 		  })
 		  .catch(function (error) {
-        	console.log(response);
+        	console.log(error);
 		  })
 		}
 

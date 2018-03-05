@@ -101014,7 +101014,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.bg_header { width:100%; height:50px; background: #f3f3f3; overflow: hidden;\n}\n.cont_header { width:1140px; height: 50px; margin:0 auto;\n}\nul li { list-style: none; float: left;\n}\nul.cont_header li { width:60px; border-right: 1px solid #dce0e5; line-height: 50px; float:right; height: 50px;\n}\nul.cont_header li.width_80 { width:80px;\n}\n.main_nav { width: 100%; height: 125px; overflow: hidden;\n}\n.left_topnav { float: right; padding-top:0px; position: relative; right:320px; top:-25px;\n}\n.top_nav { width:1140px; height: 48px; padding-top: 22px; margin: 0 auto; overflow:hidden; z-index: 2;\n}\n.right_topnav { width:256px; float: right;\n}\n.phone { float:left; margin-right: 10px;\n}\n.fontline { font-size: 12px; float:left; position: relative; top:-2px; margin-right:12px;\n}\n.hotline { border-left:1px solid #b4b8bb; padding-left:12px; height: 21px; line-height: 21px; position: relative; top:3px;\n}\n.btm_nav { height: 55px; width:100%; z-index: 1;\n}\n.left_btmnav { float:left; height: 55px; width:50%; background: url(" + escape(__webpack_require__(219)) + ") right 0 no-repeat; z-index: 1;\n}\n.right_btmnav { float:left; height: 55px;width:50%; background: #f9c231; z-index: 2;\n}\n.area_nav { width:840px; margin:0 auto; position: relative; top:-55px; left:210px;\n}\n.area_nav li { width:130px; float: left; height: 55px; line-height: 55px;\n}\n.area_nav li a:link,.area_nav li a:visited { color:#333333; font-size: 16px; text-decoration: none;\n}\n.el-dialog { width:450px; height: 470px;\n}\n.el-dialog__header { height: 40px; background: #ebebeb; padding: 0px; line-height: 40px; font-size: 14px; color:#333333;\n}\n.el-dialog__headerbtn { top:12px; right:12px;\n}\n.el-button--text { color:#333333;\n}\n.el-button--text:hover, .el-button--text:focus, .el-button--text:active { color:#333333; background-color: none;\n}\n#header_top .el-input__inner { width:250px; height: 36px; margin-bottom:20px; padding-left: 35px;border:1px solid #d9d9d9;\n}\n#header_top .yzm .el-input__inner { width:250px; height: 36px; margin-bottom:20px; padding-left: 10px;border:1px solid #d9d9d9;\n}\n.yzm .el-input__inner { width:250px; height: 36px; float: left; margin-left:100px; text-align:left; padding-left:10px;\n}\n.el-input__inner:focus { border:1px solid #d9d9d9; color:#333333;\n}\n.el-button--primary { width:250px; height: 40px; line-height: 40xp; background: #f9c231; color:#333333; border:0px; font-size: 16px;\n}\n.send_yzm { width:120px; height: 36px; float: left; position: relative; top:-63px; left:230px; font-size: 14px;\n}\n.el-dialog__footer { text-align: center; padding-top:0px;\n}\n.el-dialog__body { padding:85px 0px 0px;\n}\n.el-input__prefix { position:relative; top:-47px;left:110px; text-align: left; height: 0px;\n}\n.el-input__forget { position:relative; top:15px;left:85px; text-align: left; height: 0px;\n}\n.alert_text .el-input__inner { border:1px solid #ef2b2e; color:#ef2b2e;\n}\n.font_alert { color:#ef2b2e;\n}\n.font_alert span { position: relative; top:-3px; left:10px;\n}\n.el-button--primary:focus, .el-button--primary:hover { background: #f9c231; color:#333333;\n}\n.el-input__forget a:link,.el-input__forget a:visited { color:#333333; text-decoration: none;\n}\n.el-input__forget a:hover { color:#333333; text-decoration:underline;\n}\n.position_text { position: relative; top:-43px;\n}\n.position_icon { position: relative; top:-90px;\n}\n.position_footer { position: relative; top:-43px; clear: both;\n}\n.dia_register .el-dialog__body { padding-top:55px;\n}\n.mrtop_5 { margin-top:10px; position: relative; left:-8px;\n}\n.mrtop_5 span { position: relative; top:-2px;\n}\n.mrtop_4 { margin-top:-5px;\n}\r\n", ""]);
+exports.push([module.i, "\n.bg_header { width:100%; height:50px; background: #f3f3f3; overflow: hidden;\n}\n.cont_header { width:1140px; height: 50px; margin:0 auto;\n}\nul li { list-style: none; float: left;\n}\nul.cont_header li { width:60px; border-right: 1px solid #dce0e5; line-height: 50px; float:right; height: 50px;\n}\nul.cont_header li.width_80 { width:80px;\n}\n.main_nav { width: 100%; height: 125px; overflow: hidden;\n}\n.left_topnav { float: right; padding-top:0px; position: relative; right:320px; top:-25px;\n}\n.top_nav { width:1140px; height: 48px; padding-top: 22px; margin: 0 auto; overflow:hidden; z-index: 2;\n}\n.right_topnav { width:256px; float: right;\n}\n.phone { float:left; margin-right: 10px;\n}\n.fontline { font-size: 12px; float:left; position: relative; top:-2px; margin-right:12px;\n}\n.hotline { border-left:1px solid #b4b8bb; padding-left:12px; height: 21px; line-height: 21px; position: relative; top:3px;\n}\n.btm_nav { height: 55px; width:100%; z-index: 1;\n}\n.left_btmnav { float:left; height: 55px; width:50%; background: url(" + escape(__webpack_require__(219)) + ") right 0 no-repeat; z-index: 1;\n}\n.right_btmnav { float:left; height: 55px;width:50%; background: #f9c231; z-index: 2;\n}\n.area_nav { width:840px; margin:0 auto; position: relative; top:-55px; left:210px;\n}\n.area_nav li { width:130px; float: left; height: 55px; line-height: 55px;\n}\n.area_nav li a:link,.area_nav li a:visited { color:#333333; font-size: 16px; text-decoration: none;\n}\n.area_nav li.active a:link,.area_nav li.active a:visited { color:#333333; font-size: 16px; text-decoration: none; font-weight:bold;\n}\n.el-dialog { width:450px; height: 470px;\n}\n.el-dialog__header { height: 40px; background: #ebebeb; padding: 0px; line-height: 40px; font-size: 14px; color:#333333;\n}\n.el-dialog__headerbtn { top:12px; right:12px;\n}\n.el-button--text { color:#333333;\n}\n.el-button--text:hover, .el-button--text:focus, .el-button--text:active { color:#333333; background-color: none;\n}\n#header_top .el-input__inner { width:250px; height: 36px; margin-bottom:20px; padding-left: 35px;border:1px solid #d9d9d9;\n}\n#header_top .yzm .el-input__inner { width:250px; height: 36px; margin-bottom:20px; padding-left: 10px;border:1px solid #d9d9d9;\n}\n.yzm .el-input__inner { width:250px; height: 36px; float: left; margin-left:100px; text-align:left; padding-left:10px;\n}\n.el-input__inner:focus { border:1px solid #d9d9d9; color:#333333;\n}\n.el-button--primary { width:250px; height: 40px; line-height: 40xp; background: #f9c231; color:#333333; border:0px; font-size: 16px;\n}\n.send_yzm { width:120px; height: 36px; float: left; position: relative; top:-63px; left:230px; font-size: 14px;\n}\n.el-dialog__footer { text-align: center; padding-top:0px;\n}\n.el-dialog__body { padding:85px 0px 0px;\n}\n.el-input__prefix { position:relative; top:-47px;left:110px; text-align: left; height: 0px;\n}\n.el-input__forget { position:relative; top:15px;left:85px; text-align: left; height: 0px;\n}\n.alert_text .el-input__inner { border:1px solid #ef2b2e; color:#ef2b2e;\n}\n.font_alert { color:#ef2b2e;\n}\n.font_alert span { position: relative; top:-3px; left:10px;\n}\n.el-button--primary:focus, .el-button--primary:hover { background: #f9c231; color:#333333;\n}\n.el-input__forget a:link,.el-input__forget a:visited { color:#333333; text-decoration: none;\n}\n.el-input__forget a:hover { color:#333333; text-decoration:underline;\n}\n.position_text { position: relative; top:-43px;\n}\n.position_icon { position: relative; top:-90px;\n}\n.position_footer { position: relative; top:-43px; clear: both;\n}\n.dia_register .el-dialog__body { padding-top:55px;\n}\n.mrtop_5 { margin-top:10px; position: relative; left:-8px;\n}\n.mrtop_5 span { position: relative; top:-2px;\n}\n.mrtop_4 { margin-top:-5px;\n}\r\n", ""]);
 
 // exports
 
@@ -101149,16 +101149,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.get_session();
+    this.topnav();
+  },
   data: function data() {
     return {
       name: 'Vue.js',
       dialogTableVisible: false,
       dialogFormVisible: false,
       dialogFormVisiblemima: false,
+      username: '',
+      password: '',
+      session_username: '',
+      user_session: false,
       form: {
         name: '',
         region: '',
@@ -101169,17 +101176,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         resource: '',
         desc: ''
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      api_login: 'http://localhost/login',
+      api_session: 'http://localhost/get_session',
+      api_list: 'http://localhost/list_hotarticle',
+      api_logout: 'http://localhost/logout',
+      price: '',
+      trail: '',
+      news: ''
     };
   },
 
   methods: {
-    greet: function greet(event) {
-      alert('Hello ' + this.name + '!');
-      if (event) {
-        alert(event.target.tagName);
+
+    topnav: function topnav(event) {
+      var route_path = window.location.hash;
+      alert(route_path);
+      if (route_path == '#/price') {
+        this.price = true;
+      } else if (route_path == '#/trail') {
+        this.trail = true;
+      } else if (route_path == 3) {
+        this.gjmy = true;
+      } else if (route_path == '#/news') {
+        this.news = true;
+      } else if (route_path == 5) {
+        this.cgs = true;
+      } else if (route_path == 6) {
+        this.ghzs = true;
+      } else if (route_path == 7) {
+        this.hyyj = true;
+      } else if (route_path == 8) {
+        this.alfx = true;
       }
+    },
+
+    func_login: function func_login(event) {
+      return this.$http.get(this.api_login, {
+        params: {
+          username: this.username,
+          password: this.password
+        }
+      }).then(function (response) {
+        alert('登录成功');
+        location.reload();
+      }).catch(function (error) {
+        //console.log(response);
+      });
+    },
+
+    func_logout: function func_logout(event) {
+      return this.$http.post(this.api_logout, {}).then(function (response) {
+        alert('退出成功');
+        location.reload();
+      }).catch(function (error) {});
+    },
+
+    get_session: function get_session(event) {
+      var _this = this;
+
+      return this.$http.get(this.api_session, {}).then(function (response) {
+        _this.session_username = response.data.data.username;
+        _this.user_session = response.data.data.user_session;
+        console.log(response.data.data);
+        console.log('应该有值啊');
+      }).catch(function (error) {
+        console.log(response);
+      });
     }
+
   }
 });
 
@@ -101201,45 +101266,71 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "width_80" },
-            [
-              _c(
-                "el-button",
-                {
-                  attrs: { type: "text" },
-                  on: {
-                    click: function($event) {
-                      _vm.dialogTableVisible = true
-                    }
-                  }
-                },
-                [_vm._v("免费注册")]
+          _vm.user_session === false
+            ? _c(
+                "li",
+                { staticClass: "width_80" },
+                [
+                  _c(
+                    "el-button",
+                    {
+                      attrs: { type: "text" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogTableVisible = true
+                        }
+                      }
+                    },
+                    [_vm._v("免费注册")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          ),
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "width_80" },
-            [
-              _c(
-                "el-button",
-                {
-                  attrs: { type: "text" },
-                  on: {
-                    click: function($event) {
-                      _vm.dialogFormVisible = true
-                    }
-                  }
-                },
-                [_vm._v("请登录")]
+          _vm.user_session === false
+            ? _c(
+                "li",
+                { staticClass: "width_80" },
+                [
+                  _c(
+                    "el-button",
+                    {
+                      attrs: { type: "text" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogFormVisible = true
+                        }
+                      }
+                    },
+                    [_vm._v("请登录")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          ),
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.user_session === true
+            ? _c(
+                "li",
+                { staticClass: "width_80" },
+                [
+                  _c(
+                    "el-button",
+                    { attrs: { type: "text" }, on: { click: _vm.func_logout } },
+                    [_vm._v("退出登录")]
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.user_session === true
+            ? _c("li", {
+                staticClass: "width_80",
+                domProps: { textContent: _vm._s(_vm.session_username) }
+              })
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "el-dialog",
@@ -101489,11 +101580,11 @@ var render = function() {
                       "auto-complete": "off"
                     },
                     model: {
-                      value: _vm.form.name10,
+                      value: _vm.username,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "name10", $$v)
+                        _vm.username = $$v
                       },
-                      expression: "form.name10"
+                      expression: "username"
                     }
                   }),
                   _vm._v(" "),
@@ -101519,11 +101610,11 @@ var render = function() {
                       type: "password"
                     },
                     model: {
-                      value: _vm.form.name11,
+                      value: _vm.password,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "name11", $$v)
+                        _vm.password = $$v
                       },
-                      expression: "form.name11"
+                      expression: "password"
                     }
                   }),
                   _vm._v(" "),
@@ -101611,29 +101702,20 @@ var render = function() {
                     {
                       attrs: { type: "primary" },
                       on: {
-                        click: function($event) {
-                          _vm.dialogFormVisible = false
-                        }
+                        click: [
+                          _vm.func_login,
+                          function($event) {
+                            _vm.dialogFormVisible = false
+                          }
+                        ]
                       }
                     },
-                    [_vm._v("确 定")]
+                    [_vm._v("确 定2")]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "el-input__forget" }, [
                     _vm._v("还没有帐号？"),
-                    _c(
-                      "a",
-                      {
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            _vm.dialogFormVisible = false
-                            _vm.dialogTableVisible = true
-                          }
-                        }
-                      },
-                      [_vm._v("请注册")]
-                    ),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("请注册")]),
                     _vm._v("     "),
                     _c(
                       "a",
@@ -101866,6 +101948,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "li",
+            { class: { active: _vm.price } },
             [
               _c("router-link", { attrs: { to: "./price" } }, [
                 _vm._v("运价查询")
@@ -101876,6 +101959,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "li",
+            { class: { active: _vm.trail } },
             [
               _c("router-link", { attrs: { to: "./trail" } }, [
                 _vm._v("轨迹查询")
@@ -101896,6 +101980,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "li",
+            { class: { active: _vm.news } },
             [
               _c("router-link", { attrs: { to: "./news" } }, [
                 _vm._v("物流资讯")
@@ -105724,7 +105809,7 @@ var render = function() {
         "div",
         { staticClass: "area_trail" },
         [
-          _c("span", { staticClass: "title" }, [_vm._v("运价查询22")]),
+          _c("span", { staticClass: "title" }, [_vm._v("运价查询")]),
           _vm._v(" "),
           _c(
             "el-form",
@@ -107105,9 +107190,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+/*  export default {
+    data() {
+      return {
+        form: {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        }
+      }
+    },
+  }*/
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {},
   data: function data() {
     return {
+      name: 'Vue.js',
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+      dialogFormVisiblemima: false,
+      username: 1111,
+      password: 2222,
       form: {
         name: '',
         region: '',
@@ -107117,9 +107226,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         type: [],
         resource: '',
         desc: ''
-      }
+      },
+      formLabelWidth: '120px'
     };
-  }
+  },
+
+  methods: {}
 });
 
 /***/ }),

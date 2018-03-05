@@ -20,4 +20,7 @@ Route::get('/welcome_vue','FrontpageController@homepage');//front page: home pag
 
 Route::get('/get_article','ArticleController@get_article');//单篇文章
 Route::get('/list_hotarticle','ArticleController@list_hotarticle');//热点推荐列表
+Route::get('/login','UsersController@login');//用户登录
+Route::get('/get_session','UsersController@get_session');//用户的session
+Route::post('/logout','UsersController@logout');//用户退出
 
