@@ -20,7 +20,7 @@ class Article extends Eloquent
 	public $timestamps = true;
 
 	
-	//查询公司信息
+	//查询文章信息
 	public static function infoArticle($id)
 	{ 
 		$where = array('id'=>$id);
@@ -31,6 +31,14 @@ class Article extends Eloquent
 		if(!empty($result['update_at'])){ 
 			$result['update_at'] = date('Y-m-d H:i:s',$result['update_at']);
 		}
+		DB::update('update article set readnumber = readnumber+3 where id = ?',[$id]);
+		return $result;
+	}
+
+	//热点推荐列表
+	public static function listHotArticle()
+	{ 
+		$result = self::where(['hot'=>1])->select('title')->limit(10)->orderby('id','desc')->get();
 		return $result;
 	}
 

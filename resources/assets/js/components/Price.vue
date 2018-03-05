@@ -2,7 +2,7 @@
 	<div id="price">
 		<div class="hotpic_trail">
 			<div class="area_trail">
-				<span class="title">运价查询</span>
+				<span class="title">运价查询22</span>
 
 			  <el-form :model="form">
 			    <el-form-item>

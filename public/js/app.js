@@ -105724,7 +105724,7 @@ var render = function() {
         "div",
         { staticClass: "area_trail" },
         [
-          _c("span", { staticClass: "title" }, [_vm._v("运价查询")]),
+          _c("span", { staticClass: "title" }, [_vm._v("运价查询22")]),
           _vm._v(" "),
           _c(
             "el-form",

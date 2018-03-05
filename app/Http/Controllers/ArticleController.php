@@ -33,11 +33,27 @@ class ArticleController extends  Controller
 		
 	}
 
+
+	//获取单篇文章
     public function get_article(Request $request,Response $response)
     {
         $result = Article::infoArticle($request->get('id'));
-        $res = array('data' => $result,'description' => '','reasonCode' => '00000','result'=>'success');
+        if(!empty($result)){
+        	$res = array('data' => $result,'description' => '','reasonCode' => '00000','result'=>'success');
+    	}
         return json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+
+
+    //获取热点推荐列表
+    public function list_hotarticle(Request $request,Response $response)
+    {
+        $result = Article::listHotArticle();
+        if(!empty($result)){
+        	$res = array('data' => $result,'description' => '','reasonCode' => '00000','result'=>'success');
+    	}
+        return json_encode($res, JSON_UNESCAPED_UNICODE);
+
     }
 
 }

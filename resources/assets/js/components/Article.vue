@@ -13,8 +13,8 @@
 					<li v-bind:class="{hover:alfx}"><a href="#">案例分析</a></li>
 				</ul>
 				<div class="area_article">
-					<div class="titile_article">{{ title }}<br><span>{{ update_at }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读：{{ read }}</span></div>
-					<div class="cont_article">{{ content }}</div>
+					<div class="titile_article">{{ title }}<br><span>{{ update_at }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读：{{ readnumber }}</span></div>
+					<div class="cont_article" v-html="content"></div>
 				</div>
 			</div>
 			<div class="paihan">
@@ -22,43 +22,15 @@
 					<li>热点推荐</li>
 				</ul>
 				<ul class="list_hot">
-					<li>
+					<li v-for="item in items">
 						<div class="img_hot"><img src="../assets/img5.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img4.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img5.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img4.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img5.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img4.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img5.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》</div>
-					</li>
-					<li>
-						<div class="img_hot"><img src="../assets/img4.jpg"></div>
-						<div class="font_hot">国家能源集团与国电集团今日签署《合并协议》{{ getarticle() }}</div>
+						<div class="font_hot">{{ item.title }}</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 
-
+		<!--<div style="display:none">{{ getarticle() }}</div>-->
 
 
 	</div>
@@ -67,6 +39,10 @@
 
 <script>
   export default {
+  	mounted() {
+        this.getarticle(),
+        this.list_ticle()
+    },
     data() {
       return {
         form: {
@@ -81,7 +57,7 @@
         },
         title: '',
         update_at: '',
-        read: '',
+        readnumber: '',
         content: '',
         zxzx: false,
         gjhy: false,
@@ -91,18 +67,14 @@
         ghzs: false,
         hyyj: false,
         alfx: false,
+        items: [],
+        api_article:'http://localhost/get_article',
+        api_list:'http://localhost/list_hotarticle',
       }
     },  
 
 	methods: {
-		greet: function (event) {
-		  alert('Hello ' + this.name + '!')
-		  if (event) {
-		    alert(event.target.tagName)
-		  }
-		},
 		getarticle: function(event){
-			alert(this.$route.query.type);
 			if(this.$route.query.type == 1){ 
 				this.zxzx = true;
 			}else if(this.$route.query.type == 2){ 
@@ -121,21 +93,34 @@
 				this.alfx = true;
 			}
 
-		  return this.$http.get('http:\/\/localhost\/get_article', {
+		  return this.$http.get(this.api_article, {
 		    params: {
 		      id:this.$route.query.id
 		    }
 		  })
-		  .then(function (response) {
+		  .then(response=>{
         	this.title = response.data.data.title
         	this.update_at = response.data.data.create_at
-        	this.read = response.data.data.read
+        	this.readnumber = response.data.data.readnumber
         	this.content = response.data.data.content
 		  })
 		  .catch(function (error) {
-        	//this.fetchError = error
+        	console.log(response);
+		  })
+		},
+
+		list_ticle: function(event){
+		  return this.$http.get(this.api_list, {
+		  })
+		  .then(response=>{
+        	this.items = response.data.data
+		  })
+		  .catch(function (error) {
+        	console.log(response);
 		  })
 		}
+
+
 
 	}
   }
@@ -174,7 +159,7 @@
 .titile_article { margin-top:50px; font-size:26px; }
 .titile_article span { font-size:14px; }
 .cont_article { height: auto; text-align:left; padding-top:30px; }
-.cont_article p { text-indent:2em; font-size:16px; line-height: 30px; }
+.cont_article p { text-indent:0em; font-size:16px; line-height: 30px; }
 .list_hot { width:620px; height: auto; overflow: hidden; }
 .list_hot li { width:620px; float: left; height: 90px; margin-bottom:20px; }
 .img_hot { width:165px; height: 90px; float: left; }

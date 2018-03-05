@@ -18,5 +18,6 @@ Route::get('/welcome','FrontpageController@homepage');//front page: home page
 Route::get('/welcome_vue','FrontpageController@homepage');//front page: home page
 
 
-Route::get('/get_article','ArticleController@get_article');
+Route::get('/get_article','ArticleController@get_article');//单篇文章
+Route::get('/list_hotarticle','ArticleController@list_hotarticle');//热点推荐列表
 
