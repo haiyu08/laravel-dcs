@@ -20,12 +20,30 @@ import Account from './components/Account'
 import Document from './components/Document'
 import News from './components/News'
 import axios from 'axios'
+import VueI18n from 'vue-i18n'
+import VeeValidate,{Validator} from 'vee-validate'
+import zh_CN from 'vee-validate/dist/locale/zh_CN'
+
 import './validate.js'
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.prototype.$http = axios
 Vue.use(ElementUI);
 Vue.use(VueAwesomeSwiper);
+
+
+Validator.localize(zh_CN);
+const dictionary = {
+   zh_CN: {
+    messages: {
+      regex: function(n) { return "手机号码"+"格式无效";},
+      required: function(n) {return "请将信息填写完整";},
+      min:function(n,e){return "密码必须至少有"+e[0]+" 字符."},
+      max:function(n,e){return "密码不能大于"+e[0]+" 字符."},
+    }
+  }
+};
+Validator.localize(dictionary);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

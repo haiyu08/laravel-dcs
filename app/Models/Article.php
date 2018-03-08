@@ -19,6 +19,9 @@ class Article extends Eloquent
 	protected $guarded = array('id');
 	public $timestamps = true;
 
+	public function fromDateTime($value) {
+		return $value;
+	}
 	
 	//查询文章信息
 	public static function infoArticle($id)
@@ -42,11 +45,33 @@ class Article extends Eloquent
 		return $result;
 	}
 
+	//热点推荐列表
+	public static function listRankarticle()
+	{ 
+		$result = self::select('title')->limit(10)->orderby('readnumber','desc')->get();
+		return $result;
+	}
+
+	//热点推荐列表
+	public static function listTypearticle($type)
+	{ 
+		$result = self::where(['type'=>$type,'status'=>0])->select('title','summer')->limit(10)->orderby('readnumber','desc')->get();
+		return $result;
+	}
+
 	//正确返回：00000
     public static function return_success($data,$description='')
     {
         $res = array('data' => $data,'description' => $description,'reasonCode' => '00000','result'=>'success');
         return json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+
+    //发布文章
+    public static function edit_ueditor($title,$content)
+    { 
+    	$result = self::create(['title'=>$title,'content'=>$content]);
+    	return $result;
+    }
+
 
 }

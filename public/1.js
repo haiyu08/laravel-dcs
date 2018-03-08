@@ -1,18 +1,18 @@
 webpackJsonp([1],{
 
-/***/ 278:
+/***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(296)
+  __webpack_require__(298)
 }
 var normalizeComponent = __webpack_require__(6)
 /* script */
-var __vue_script__ = __webpack_require__(298)
+var __vue_script__ = __webpack_require__(300)
 /* template */
-var __vue_template__ = __webpack_require__(299)
+var __vue_template__ = __webpack_require__(301)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,13 +52,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 296:
+/***/ 298:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(297);
+var content = __webpack_require__(299);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 297:
+/***/ 299:
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(8);
@@ -88,14 +88,14 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n#area_news { width:100%; height: auto; border-top:1px solid #d9d9d9; margin: 0 auto; margin-bottom:70px;\n}\n.top_news { width: 1140px; height: 240px; margin:30px auto; margin-bottom:0px;\n}\n.hotpic_news { width:655px; height: 240px; float: left;\n}\n.font_commond { width:450px; height: 220px; float: right; position: relative; top:-10px;\n}\n.font_commond li a:link,.font_commond li a:visited { font-size: 18px; line-height: 36px;\n}\n.font_commond li a:hover { text-decoration: underline;\n}\n.hotpic_news div{ height:40px; line-height: 40px; background: #000; opacity:0.8; color:#fff; font-size: 16px; position: relative; top:-44px;\n}\n.cent_news { width: 1140px; height: auto; margin: 0 auto; overflow: hidden;\n}\n.mt_15px { margin-top:15px;\n}\n.left_list { width:690px; height: auto; float:left;\n}\n.left_list ul.nav_news { width:690px; height: 34px; border-bottom:1px solid #d9d9d9;\n}\n.left_list ul.nav_news li a:link,.left_list ul.nav_news li a:visited { color:#333333; font-size:16px; width:82px; display: block; height: 34px; line-height: 34px;\n}\n.left_list ul.nav_news li.hover a { font-weight:bold; color:#333333; font-size:16px; display: block; cursor:pointer; border-bottom:2px solid #f9c231;height: 33px;\n}\n.one_news { width:690px; height:120px; margin-top:30px; text-align: left;\n}\n.one_news .img { width:200px; height: 120px; float: left;\n}\n.font_summer { width:470px; height: 120px; float: right; font-size: 14px; color:#666666; line-height:24px;\n}\n.font_summer span { font-size:16px; color:#333333; line-height:40px;\n}\n.font_summer a:link,.font_summer a:visited { color:#333333; text-decoration: none;\n}\n.font_summer a:hover { text-decoration: underline;\n}\n.paihan { width:377px; height: auto; float: right;\n}\n.paihan ul.nav_news { width:377px; height: 34px; border-bottom:1px solid #d9d9d9; font-size:16px; font-weight: bold;\n}\n.paihan ul.nav_news li { width:82px; border-bottom:2px solid #f9c231; height: 33px;\n}\n.list_paihan li { width:377px; height: 38px; line-height: 38px; overflow: hidden;text-align: left;background: url(" + escape(__webpack_require__(60)) + ") 0 12px no-repeat;\n}\n.list_paihan li.top { width:377px; height: 38px; line-height: 38px; overflow: hidden;text-align: left;background: url(" + escape(__webpack_require__(60)) + ") 0 -20px no-repeat;\n}\n.list_paihan a:link,.list_paihan a:visited { height: 38px; line-height: 38px; text-decoration: none; font-size:16px; margin-left:4px;\n}\n.list_paihan a:hover { text-decoration: underline; font-size:16px;\n}\n.paihan span { margin-right:15px; font-size:13px; color:#fff; text-align: center; position: relative; left:4px;\n}\n.paihan span.pai_10 { margin-right:15px; font-size:12px; color:#fff; position: relative; left:2px;\n}\n.area_article { width:620px; height: auto; margin: 0 auto;\n}\n.titile_article { margin-top:50px; font-size:26px;\n}\n.titile_article span { font-size:14px;\n}\n.cont_article { height: auto; text-align:left; padding-top:30px;\n}\n.cont_article p { text-indent:0em; font-size:16px; line-height: 30px;\n}\n.list_hot { width:620px; height: auto; overflow: hidden;\n}\n.list_hot li { width:620px; float: left; height: 90px; margin-bottom:20px;\n}\n.img_hot { width:165px; height: 90px; float: left;\n}\n.font_hot { width:190px; height: 90px; float: left; text-align: left; margin-left:20px; font-size:14px; line-height: 26px; margin-top:15px;\n}\n.mb_10 { margin-bottom:20px;\n}\r\n", ""]);
+exports.push([module.i, "\n#area_news { width:100%; height: auto; border-top:1px solid #d9d9d9; margin: 0 auto; margin-bottom:70px;\n}\n.top_news { width: 1140px; height: 240px; margin:30px auto; margin-bottom:0px;\n}\n.hotpic_news { width:655px; height: 240px; float: left;\n}\n.font_commond { width:450px; height: 220px; float: right; position: relative; top:-10px;\n}\n.font_commond li a:link,.font_commond li a:visited { font-size: 18px; line-height: 36px;\n}\n.font_commond li a:hover { text-decoration: underline;\n}\n.hotpic_news div{ height:40px; line-height: 40px; background: #000; opacity:0.8; color:#fff; font-size: 16px; position: relative; top:-44px;\n}\n.cent_news { width: 1140px; height: auto; margin: 0 auto; overflow: hidden;\n}\n.mt_15px { margin-top:15px;\n}\n.left_list { width:690px; height: auto; float:left;\n}\n.left_list ul.nav_news { width:690px; height: 34px; border-bottom:1px solid #d9d9d9;\n}\n.left_list ul.nav_news li a:link,.left_list ul.nav_news li a:visited { color:#333333; font-size:16px; width:82px; display: block; height: 34px; line-height: 34px;\n}\n.left_list ul.nav_news li.hover a { font-weight:bold; color:#333333; font-size:16px; display: block; cursor:pointer; border-bottom:2px solid #f9c231;height: 33px;\n}\n.one_news { width:690px; height:120px; margin-top:30px; text-align: left;\n}\n.one_news .img { width:200px; height: 120px; float: left;\n}\n.font_summer { width:470px; height: 120px; float: right; font-size: 14px; color:#666666; line-height:24px;\n}\n.font_summer span { font-size:16px; color:#333333; line-height:40px;\n}\n.font_summer a:link,.font_summer a:visited { color:#333333; text-decoration: none;\n}\n.font_summer a:hover { text-decoration: underline;\n}\n.paihan { width:377px; height: auto; float: right;\n}\n.paihan ul.nav_news { width:377px; height: 34px; border-bottom:1px solid #d9d9d9; font-size:16px; font-weight: bold;\n}\n.paihan ul.nav_news li { width:82px; border-bottom:2px solid #f9c231; height: 33px;\n}\n.list_paihan li { width:377px; height: 38px; line-height: 38px; overflow: hidden;text-align: left;background: url(" + escape(__webpack_require__(61)) + ") 0 12px no-repeat;\n}\n.list_paihan li.top { width:377px; height: 38px; line-height: 38px; overflow: hidden;text-align: left;background: url(" + escape(__webpack_require__(61)) + ") 0 -20px no-repeat;\n}\n.list_paihan a:link,.list_paihan a:visited { height: 38px; line-height: 38px; text-decoration: none; font-size:16px; margin-left:4px;\n}\n.list_paihan a:hover { text-decoration: underline; font-size:16px;\n}\n.paihan span { margin-right:15px; font-size:13px; color:#fff; text-align: center; position: relative; left:4px;\n}\n.paihan span.pai_10 { margin-right:15px; font-size:12px; color:#fff; position: relative; left:2px;\n}\n.area_article { width:620px; height: auto; margin: 0 auto;\n}\n.titile_article { margin-top:50px; font-size:26px;\n}\n.titile_article span { font-size:14px;\n}\n.cont_article { height: auto; text-align:left; padding-top:30px;\n}\n.cont_article p { text-indent:0em; font-size:16px; line-height: 30px;\n}\n.list_hot { width:620px; height: auto; overflow: hidden;\n}\n.list_hot li { width:620px; float: left; height: 90px; margin-bottom:20px;\n}\n.img_hot { width:165px; height: 90px; float: left;\n}\n.font_hot { width:190px; height: 90px; float: left; text-align: left; margin-left:20px; font-size:14px; line-height: 26px; margin-top:15px;\n}\n.mb_10 { margin-bottom:20px;\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 298:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -226,7 +226,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 299:
+/***/ 301:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -322,7 +322,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "img_hot" }, [
-      _c("img", { attrs: { src: __webpack_require__(300) } })
+      _c("img", { attrs: { src: __webpack_require__(302) } })
     ])
   }
 ]
@@ -337,7 +337,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 300:
+/***/ 302:
 /***/ (function(module, exports) {
 
 module.exports = "/images/img5.jpg?b16a6721a3f12f997190ea9a6f90f250";

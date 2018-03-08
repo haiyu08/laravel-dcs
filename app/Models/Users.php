@@ -28,6 +28,26 @@ class Users extends Eloquent
 		return $result;
 	}
 
+	//判断用户是否已经注册
+	public static function check_userexit($username)
+	{ 
+		$id = self::select('id')->where(['username'=>$username])->first();
+		return $id;
+	}
+
+	//用户注册进数据库
+	public static function register($username,$password)
+	{ 
+		$result = self::create(['username'=>$username,'password'=>$password,'phone'=>$username]);
+		return $result;
+	}
+
+	//重置用户密码
+	public static function resetpassword($username,$password)
+	{ 
+		$result = self::where(['username'=>$username])->update(['password'=>$password]);
+		return $result;
+	}
 
 
 }

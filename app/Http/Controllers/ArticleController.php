@@ -56,5 +56,33 @@ class ArticleController extends  Controller
 
     }
 
+
+    //获取资讯排行列表
+    public function list_rankarticle(Request $request,Response $response)
+    {
+        $result = Article::listRankarticle();
+        if(!empty($result)){
+        	$res = array('data' => $result,'description' => '','reasonCode' => '00000','result'=>'success');
+    	}
+        return json_encode($res, JSON_UNESCAPED_UNICODE);
+
+    }
+
+    //获取资讯类型列表
+    public function list_typearticle(Request $request,Response $response)
+    {	
+    	$type = $request->get('type');
+        $result = Article::listTypearticle($type);
+        if(!empty($result)){
+        	$res = array('data' => $result,'description' => '','reasonCode' => '00000','result'=>'success');
+    	}
+        return json_encode($res, JSON_UNESCAPED_UNICODE);
+
+    }
+
+
+
+
+
 }
 

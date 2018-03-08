@@ -8,30 +8,34 @@
         <li v-if="user_session === false" class="width_80"><el-button type="text" @click="dialogFormVisible = true">请登录</el-button></li>      
         <li v-if="user_session === true" class="width_80"><el-button type="text" 
           v-on:click="func_logout">退出登录</el-button></li>
-        <li  class="width_80" v-if="user_session === true" v-text="session_username"></li> 
+        <li  class="width_120" v-if="user_session === true" v-text="session_username"></li> 
+
         <!--注册-->
         <el-dialog title="注册" :visible.sync="dialogTableVisible" class="dia_register">
           <el-form :model="form">
-              <el-input v-model="form.name1" name="phone" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
+              <el-input v-model="mobile_register" data-vv-delay="500" name="phone" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
 
-              <el-input v-model="form.name2" name="alpha_dash" placeholder="请输入登录密码" auto-complete="off" type="password" v-validate="'required|alpha_dash|max:14|min:6'" ></el-input>
+              <el-input v-model="password_register" data-vv-delay="500" name="alpha_dash" :type="this.registration_data.pwdType" placeholder="请输入登录密码" auto-complete="off" v-validate="{ required: true,max:14,min:6 }" ></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
+              <div class="el-input__prefix" style="position:relative; left:320px;"><img :src="this.registration_data.src" @click="changeType()"/></div>
 
-              <el-input v-model="form.name3" placeholder="请输入验证码" auto-complete="off" type="text" class='yzm'></el-input>
-              <el-button type="primary" class="send_yzm">短信验证码</el-button>
+              <el-input v-model="yzm_register" name="yzm" v-validate="{ required: true }" placeholder="请输入验证码" auto-complete="off" type="text" class='yzm'></el-input>
+              <el-button type="primary" v-if="errors.has('phone')" disabled="disabled" style="background:#999;"  class="send_yzm">短信验证码</el-button>
+              <el-button type="primary" v-else-if="errors.has('alpha_dash')" disabled="disabled" style="background:#999;"  class="send_yzm">短信验证码</el-button>
+              <el-button type="primary" v-on:click="send_yzm(1)" v-else-if="!errors.has('alpha_dash')" class="send_yzm">短信验证码</el-button>
 
               <el-input v-model="form.name4" class="alert_text position_text" v-if="errors.has('phone')" auto-complete="off" readonly></el-input>
               <div class="el-input__prefix font_alert position_icon" v-if="errors.has('phone')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone') }}</span></div>
 
               <template v-else> 
-                <el-input v-model="form.name4" class="alert_text position_text" v-if="errors.has('alpha_dash')" auto-complete="off" readonly></el-input>
+                <el-input v-model="form.name5" class="alert_text position_text" v-if="errors.has('alpha_dash')" auto-complete="off" readonly></el-input>
                 <div class="el-input__prefix font_alert position_icon" v-if="errors.has('alpha_dash')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash') }}</span></div>
               </template>
 
           </el-form>
           <div slot="footer" class="dialog-footer position_footer">
-            <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
+            <el-button type="primary" v-on:click="func_register" @click="dialogTableVisible = true">确 定</el-button>
             <!--<div class="mrtop_5"><input type="checkbox"  checked="checked"><span class="f12">我已阅读并同意相关服务条款和隐私政策</span></div>-->
             <div class="el-input__forget mrtop_4">已有帐号？<a href="#" @click="dialogFormVisible = true;dialogTableVisible = false">请登录</a></div>
           </div>
@@ -40,23 +44,25 @@
         <!--登录-->
         <el-dialog title="登录" :visible.sync="dialogFormVisible">
           <el-form :model="form">
-              <el-input  v-model="username" name="phone_login" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }" ></el-input>
+              <el-input  v-model="username" name="phone_login" data-vv-delay="500" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }" ></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
-              <el-input v-model="password" name="alpha_dash_login" v-validate="'required|alpha_dash|max:14|min:6'" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
+
+              <el-input v-model="password" name="alpha_dash_login" data-vv-delay="500" v-validate="{ required: true,max:14,min:6 }" placeholder="请输入登录密码" auto-complete="off" :type="this.registration_data.pwdType"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
+              <div class="el-input__prefix" style="position:relative; left:320px;"><img :src="this.registration_data.src" @click="changeType()"/></div>
 
               <el-input v-model="form.name12" class="alert_text" v-if="errors.has('phone_login')" auto-complete="off" readonly></el-input>
               <div class="el-input__prefix font_alert" v-if="errors.has('phone_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone_login') }}</span></div>
 
               <template v-else> 
-              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('alpha_dash_login')" auto-complete="off" readonly></el-input>
+              <el-input v-model="form.name13" class="alert_text" v-if="errors.has('alpha_dash_login')" auto-complete="off" readonly></el-input>
               <div class="el-input__prefix font_alert" v-if="errors.has('alpha_dash_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash_login') }}</span></div>
               </template>
 
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button type="primary" v-on:click="func_login" @click="dialogFormVisible = false"> <!-- v-on:click="func_login" -->确 定2</el-button>
-            <div class="el-input__forget">还没有帐号？<a href="#" >请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" @click="dialogFormVisible = false;dialogFormVisiblemima = true">忘记密码？</a></span></div>
+            <el-button type="primary" v-on:click="func_login" @click="dialogFormVisible = true">确 定</el-button>
+            <div class="el-input__forget">还没有帐号？<a href="#" @click="dialogFormVisible = false;dialogTableVisible = true">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" @click="dialogFormVisible = false;dialogFormVisiblemima = true">忘记密码？</a></span></div>
           </div>
         </el-dialog>
 
@@ -64,26 +70,33 @@
         <!--忘记密码-->
         <el-dialog title="忘记密码" :visible.sync="dialogFormVisiblemima">
           <el-form :model="form">
-              <el-input v-model="form.name10" name="phone_login" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
+              <el-input v-model="mobile_forget" name="phone_login" data-vv-delay="500" placeholder="请输入手机号码" auto-complete="off" v-validate="{ required: true, regex: /^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/ }"></el-input>
               <div class="el-input__prefix"><img src="../assets/bg_user.png"></div>
-              <el-input v-model="form.name11" name="alpha_dash_login" v-validate="'required|alpha_dash|max:14|min:6'" placeholder="请输入登录密码" auto-complete="off" type="password"></el-input>
-              <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
 
-              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('phone_login')" auto-complete="off" readonly></el-input>
-              <div class="el-input__prefix font_alert" v-if="errors.has('phone_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone_login') }}</span></div>
+              <el-input v-model="password_forget" name="alpha_dash_login" data-vv-delay="500" v-validate="{ required: true,max:14,min:6 }" placeholder="请输入新密码" auto-complete="off" :type="this.registration_data.pwdType"></el-input>
+              <div class="el-input__prefix"><img src="../assets/bg_passwd.png"></div>
+              <div class="el-input__prefix" style="position:relative; left:320px;"><img :src="this.registration_data.src" @click="changeType()"/></div>
+
+              <el-input v-model="yzm_forget" name="yzm" v-validate="{ required: true }" placeholder="请输入验证码" auto-complete="off" type="text" class='yzm'></el-input>
+              <el-button type="primary" v-if="errors.has('phone_login')" disabled="disabled" style="background:#999;"  class="send_yzm">短信验证码</el-button>
+              <el-button type="primary" v-else-if="errors.has('alpha_dash_login')" disabled="disabled" style="background:#999;"  class="send_yzm">短信验证码</el-button>
+              <el-button type="primary" v-on:click="send_yzm(2)" v-else-if="!errors.has('alpha_dash_login')" class="send_yzm">短信验证码</el-button>
+
+
+              <el-input v-model="form.name20" class="alert_text position_text" v-if="errors.has('phone_login')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert position_icon" v-if="errors.has('phone_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('phone_login') }}</span></div>
 
               <template v-else> 
-              <el-input v-model="form.name12" class="alert_text" v-if="errors.has('alpha_dash_login')" auto-complete="off" readonly></el-input>
-              <div class="el-input__prefix font_alert" v-if="errors.has('alpha_dash_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash_login') }}</span></div>
+              <el-input v-model="form.name21" class="alert_text position_text" v-if="errors.has('alpha_dash_login')" auto-complete="off" readonly></el-input>
+              <div class="el-input__prefix font_alert position_icon" v-if="errors.has('alpha_dash_login')"><img src="../assets/bg_alert.png"><span>{{ errors.first('alpha_dash_login') }}</span></div>
               </template>
 
           </el-form>
-          <div slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="dialogFormVisiblemima = false">确 定</el-button>
-            <div class="el-input__forget">还没有帐号？<a href="#" @click="dialogFormVisiblemima = false;dialogTableVisible = true">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码？</a></span></div>
+          <div slot="footer" class="dialog-footer position_footer">
+            <el-button type="primary" v-on:click="func_resetpassword" @click="dialogFormVisiblemima = true">确 定</el-button>
+            <div class="el-input__forget mrtop_4">还没有帐号？<a href="#" @click="dialogFormVisible = false;dialogTableVisible = true">请注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" @click="dialogFormVisible = true;dialogTableVisible = false">请登录</a></span></div>
           </div>
         </el-dialog>
-
 
       </ul>
     </div>
@@ -133,6 +146,12 @@ export default {
       password:'',
       session_username:'',
       user_session:false,
+      mobile_register:'',
+      password_register:'',
+      yzm_register:'',
+      mobile_forget:'',
+      password_forget:'',
+      yzm_forget:'',
       form: {
         name: '',
         region: '',
@@ -142,12 +161,19 @@ export default {
         type: [],
         resource: '',
         desc: '',
-      },
+      },        
+      registration_data:{
+         pwdType:"password",
+         src:require("../assets/colse_eyes.png")
+        },
       formLabelWidth: '120px',
       api_login: 'http://localhost/login',
       api_session: 'http://localhost/get_session',
       api_list:'http://localhost/list_hotarticle',
       api_logout:'http://localhost/logout',
+      api_sendyzm:'http://localhost/message_register',
+      api_register:'http://localhost/register',
+      api_resetpassword:'http://localhost/resetpassword',
       price:'',
       trail:'',
       news:''
@@ -176,7 +202,12 @@ export default {
         this.alfx = true;
       }
     },
+    changeType:function (event) {
+       this.registration_data.pwdType = this.registration_data.pwdType==='password'?'text':'password';
+       this.registration_data.src=this.registration_data.src==require("../assets/colse_eyes.png")?require("../assets/open_eyes.png"):require("../assets/colse_eyes.png");
+    },
 
+    //登录
     func_login:function (event) {
       return this.$http.get(this.api_login, {
         params: {
@@ -185,12 +216,87 @@ export default {
         }
       })
       .then(response=>{
-          alert('登录成功');
-          location.reload();
+          if(response.data.reasonCode=='00000'){
+            alert('登录成功!');
+            location.reload();
+          }else{ 
+            alert('登录失败!');  
+          }
       })
       .catch(function (error) {
           //console.log(response);
       })
+    },
+
+    //注册发送验证码
+    send_yzm:function (type) {
+      return this.$http.get(this.api_sendyzm,{ 
+        params:{ 
+          mobile:this.mobile_register,
+          type:type,
+        }
+      }).then(response=>{
+          alert('验证码发送成功!');
+      })
+    },
+
+    //重置密码发送验证码
+    send_yzm:function (type) {
+      return this.$http.get(this.api_sendyzm,{ 
+        params:{ 
+          mobile:this.mobile_forget,
+          type:type,
+        }
+      }).then(response=>{
+          alert('验证码发送成功!');
+      })
+    },
+
+    //确认注册
+    func_register:function (event) {
+      return this.$http.get(this.api_register,{ 
+        params:{ 
+          username:this.mobile_register,
+          password:this.password_register,
+          yzm:this.yzm_register,
+        }
+      }).then(response=>{
+          if(response.data.reasonCode=='00000'){
+            alert('用户注册成功!');
+            location.reload();
+          }else{ 
+            alert(response.data.reasonCode);
+            alert('验证码不正确!');  
+          }
+      })
+      .catch(function (error){
+          alert('用户注册失败!'); 
+          location.reload();       
+      })
+
+    },
+
+    //重置密码
+    func_resetpassword:function (event) {
+      return this.$http.get(this.api_resetpassword,{ 
+        params:{ 
+          username:this.mobile_forget,
+          password:this.password_forget,
+          yzm:this.yzm_forget,
+        }
+      }).then(response=>{
+          if(response.data.reasonCode=='00000'){
+            alert('用户重置密码成功!');
+            location.reload();
+          }else{ 
+            alert('验证码不正确!');  
+          }
+      })
+      .catch(function (error){
+          alert('用户重置密码失败!'); 
+          location.reload();       
+      })
+
     },
 
     func_logout:function (event) { 
@@ -227,6 +333,7 @@ export default {
 ul li { list-style: none; float: left; }
 ul.cont_header li { width:60px; border-right: 1px solid #dce0e5; line-height: 50px; float:right; height: 50px; } 
 ul.cont_header li.width_80 { width:80px; }
+ul.cont_header li.width_120 { width:120px; }
 .main_nav { width: 100%; height: 125px; overflow: hidden; }
 .left_topnav { float: right; padding-top:0px; position: relative; right:320px; top:-25px;}
 .top_nav { width:1140px; height: 48px; padding-top: 22px; margin: 0 auto; overflow:hidden; z-index: 2;}
